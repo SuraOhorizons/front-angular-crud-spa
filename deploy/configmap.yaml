@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ohorizons-ms-config
+data:
+  API_UPSTREAM: http://ohorizons-tasks-api:3000

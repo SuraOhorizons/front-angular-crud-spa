@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ohorizons-ms
+spec:
+  selector:
+    app.kubernetes.io/name: ohorizons-ms
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
