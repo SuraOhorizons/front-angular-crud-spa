@@ -1,9 +1,21 @@
-<div class="page">
-  <header>
-    <h1>Angular CRUD SPA</h1>
-    <p>CRUD básico contra una API PostgREST.</p>
-  </header>
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <img class="brand__logo" src="logo.svg" alt="Sura" />
+      <div class="brand__text">
+        <span class="brand__title">Gestión de Tareas</span>
+        <span class="brand__subtitle">Open Horizons · Plataforma interna</span>
+      </div>
+    </div>
 
+    <div class="partner">
+      <span class="partner__divider" aria-hidden="true"></span>
+      <img class="partner__logo" src="logo-nttdata.png" alt="NTT DATA" />
+    </div>
+  </div>
+</header>
+
+<div class="page">
   <app-task-form
     [task]="editingTask()"
     (saved)="onSaved()"

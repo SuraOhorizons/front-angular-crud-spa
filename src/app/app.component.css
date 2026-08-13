@@ -1,19 +1,70 @@
+.topbar {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.topbar__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand__logo {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.brand__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.brand__subtitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.02em;
+}
+
+.partner {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  opacity: 0.85;
+}
+
+.partner__divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.partner__logo {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
 .page {
   max-width: 720px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-header {
-  margin-bottom: 1.5rem;
-}
-
-header h1 {
-  margin: 0 0 0.25rem;
-  font-size: 1.5rem;
-}
-
-header p {
-  margin: 0;
-  color: #555;
+  padding: 2rem 1rem 3rem;
 }

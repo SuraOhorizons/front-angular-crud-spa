@@ -1,17 +1,21 @@
 .list {
-  background: white;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .list h2 {
   margin-top: 0;
-  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
 }
 
 .error {
-  color: #b00020;
+  color: var(--color-danger);
 }
 
 ul {
@@ -23,25 +27,47 @@ ul {
 li {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid #eee;
+  gap: 0.85rem;
+  padding: 0.75rem 0.25rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s ease;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background: #f7f9fc;
+}
+
+.check input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
 }
 
 li.done .content strong {
   text-decoration: line-through;
-  color: #999;
+  color: var(--color-text-muted);
 }
 
 .content {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 0.15rem;
+}
+
+.content strong {
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .content span {
-  font-size: 0.85rem;
-  color: #666;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
 }
 
 .actions {
@@ -50,14 +76,63 @@ li.done .content strong {
 }
 
 .actions button {
-  border: 1px solid #ccc;
-  background: white;
-  border-radius: 4px;
-  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.actions button:hover {
+  background: #eef3fc;
 }
 
 .actions button.danger {
-  border-color: #b00020;
-  color: #b00020;
+  border-color: rgba(197, 34, 31, 0.35);
+  color: var(--color-danger);
+}
+
+.actions button.danger:hover {
+  background: rgba(197, 34, 31, 0.08);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.pagination__status {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.pagination button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: 6px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #eef3fc;
+}
+
+.pagination button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
