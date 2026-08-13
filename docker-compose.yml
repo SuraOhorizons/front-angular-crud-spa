@@ -18,7 +18,7 @@ services:
       retries: 10
 
   backend:
-    build: ../ohorizons-tasks-api-ms
+    build: ../ohorizons-tasks-api-mvp
     restart: unless-stopped
     depends_on:
       postgres:

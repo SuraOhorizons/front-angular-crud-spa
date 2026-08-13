@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: ohorizons-ms-config
 data:
-  API_UPSTREAM: http://ohorizons-tasks-api:3000
+  API_UPSTREAM: http://backend-tasks-api-v3:3000

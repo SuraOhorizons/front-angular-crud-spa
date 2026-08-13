@@ -19,6 +19,9 @@ export class TaskListComponent implements OnChanges {
   loading = false;
   error: string | null = null;
 
+  readonly pageSize = 5;
+  currentPage = 1;
+
   constructor(private readonly taskService: TaskService) {}
 
   ngOnChanges(): void {
@@ -31,6 +34,7 @@ export class TaskListComponent implements OnChanges {
     this.taskService.list().subscribe({
       next: (tasks) => {
         this.tasks = tasks;
+        this.currentPage = Math.min(this.currentPage, this.totalPages);
         this.loading = false;
       },
       error: () => {
@@ -38,6 +42,19 @@ export class TaskListComponent implements OnChanges {
         this.loading = false;
       },
     });
+  }
+
+  get totalPages(): number {
+    return Math.max(1, Math.ceil(this.tasks.length / this.pageSize));
+  }
+
+  get pagedTasks(): Task[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.tasks.slice(start, start + this.pageSize);
+  }
+
+  goToPage(page: number): void {
+    this.currentPage = Math.min(Math.max(1, page), this.totalPages);
   }
 
   toggleDone(task: Task): void {

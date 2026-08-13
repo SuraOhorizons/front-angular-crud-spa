@@ -6,7 +6,7 @@
   <p *ngIf="!loading && !error && tasks.length === 0">No hay tareas todavía.</p>
 
   <ul *ngIf="!loading && tasks.length > 0">
-    <li *ngFor="let task of tasks" [class.done]="task.done">
+    <li *ngFor="let task of pagedTasks" [class.done]="task.done">
       <label class="check">
         <input type="checkbox" [checked]="task.done" (change)="toggleDone(task)" />
       </label>
@@ -22,4 +22,24 @@
       </div>
     </li>
   </ul>
+
+  <nav class="pagination" *ngIf="!loading && totalPages > 1">
+    <button
+      type="button"
+      (click)="goToPage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+    >
+      Anterior
+    </button>
+
+    <span class="pagination__status">Página {{ currentPage }} de {{ totalPages }}</span>
+
+    <button
+      type="button"
+      (click)="goToPage(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+    >
+      Siguiente
+    </button>
+  </nav>
 </section>
