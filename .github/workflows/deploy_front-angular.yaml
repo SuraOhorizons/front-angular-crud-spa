@@ -1,4 +1,4 @@
-name: Deploy Backend Tasks API
+name: Deploy Frontend Angular
 
 on:
   push:
@@ -14,8 +14,8 @@ permissions:
 env:
   ACR_NAME: crsuradev
   REGISTRY: crsuradev.azurecr.io
-  IMAGE_NAME: backend-tasks-api-v3
-  IMAGE_TAG: v0.1.0
+  IMAGE_NAME: angular-app-v1
+  IMAGE_TAG: v0.1.1
 
   AZURE_TENANT_ID: 9dbc76ea-fb25-4b07-8f07-5dc315999b76
   AZURE_SUBSCRIPTION_ID: f0550323-fb0b-44d4-8a39-ecf0f6c2dbc9
@@ -72,7 +72,6 @@ jobs:
               --username "$AZURE_CLIENT_ID" \
               --password-stdin
 
-
       - name: Build Docker Image
         shell: bash
         run: |
@@ -85,7 +84,6 @@ jobs:
             --tag "$FULL_IMAGE" \
             .
 
-
       - name: Push Docker Image
         shell: bash
         run: |
@@ -95,7 +93,6 @@ jobs:
           echo "Image: $FULL_IMAGE"
 
           docker push "$FULL_IMAGE"
-
 
       - name: Verify Image
         shell: bash
@@ -107,7 +104,7 @@ jobs:
             --repository "$IMAGE_NAME" \
             --output table
 
-          echo "===== VERIFYING v0.1.0 ====="
+          echo "===== VERIFYING ${IMAGE_TAG} ====="
 
           if az acr repository show-tags \
               --name "$ACR_NAME" \
