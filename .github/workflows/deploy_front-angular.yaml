@@ -15,7 +15,7 @@ env:
   ACR_NAME: crsuradev
   REGISTRY: crsuradev.azurecr.io
   IMAGE_NAME: angular-app-v1
-  IMAGE_TAG: v0.1.2
+  IMAGE_TAG: v0.1.3
 
   AZURE_TENANT_ID: 9dbc76ea-fb25-4b07-8f07-5dc315999b76
   AZURE_SUBSCRIPTION_ID: f0550323-fb0b-44d4-8a39-ecf0f6c2dbc9
