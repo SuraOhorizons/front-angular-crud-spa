@@ -33,14 +33,28 @@ services:
       timeout: 3s
       retries: 10
 
+  chat-backend:
+    build: ../rag-application-mock
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
   app:
     build: .
     restart: unless-stopped
     depends_on:
       backend:
         condition: service_healthy
+      chat-backend:
+        condition: service_healthy
     environment:
       API_UPSTREAM: http://backend:3000
+      CHAT_API_UPSTREAM: http://chat-backend:8000
     ports:
       - "8080:8080"
 

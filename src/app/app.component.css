@@ -2,6 +2,7 @@
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: #ffffff;
   box-shadow: var(--shadow-md);
+  padding-bottom: 0.4rem;
 }
 
 .topbar__inner {
@@ -63,8 +64,24 @@
   display: block;
 }
 
-.page {
+.nav {
   max-width: 720px;
   margin: 0 auto;
-  padding: 2rem 1rem 3rem;
+  padding: 0 1rem;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav__link {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 0.1rem;
+  border-bottom: 2px solid transparent;
+}
+
+.nav__link--active {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
 }

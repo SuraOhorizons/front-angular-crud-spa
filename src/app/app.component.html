@@ -13,18 +13,11 @@
       <img class="partner__logo" src="logo-nttdata.png" alt="NTT DATA" />
     </div>
   </div>
+
+  <nav class="nav">
+    <a class="nav__link" routerLink="/" routerLinkActive="nav__link--active" [routerLinkActiveOptions]="{ exact: true }">Tareas</a>
+    <a class="nav__link" routerLink="/chat" routerLinkActive="nav__link--active">Chat</a>
+  </nav>
 </header>
 
-<div class="page">
-  <app-task-form
-    [task]="editingTask()"
-    (saved)="onSaved()"
-    (cancelled)="onCancelEdit()"
-  ></app-task-form>
-
-  <app-task-list
-    [refreshToken]="refreshToken()"
-    (edit)="onEdit($event)"
-    (changed)="onSaved()"
-  ></app-task-list>
-</div>
+<router-outlet></router-outlet>
