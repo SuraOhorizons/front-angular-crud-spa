@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
           env:
             - name: API_UPSTREAM
               valueFrom:
@@ -27,11 +27,11 @@ spec:
                   key: API_UPSTREAM
           readinessProbe:
             httpGet:
-              path: /healthz
+              path: /
               port: http
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: /
               port: http
           resources:
             requests:
