@@ -16,23 +16,37 @@ spec:
         - name: spa
           image: ohorizons-ms:latest
           imagePullPolicy: IfNotPresent
+
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
+              protocol: TCP
+
           env:
             - name: API_UPSTREAM
               valueFrom:
                 configMapKeyRef:
                   name: ohorizons-ms-config
                   key: API_UPSTREAM
+
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+
           livenessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+
           resources:
             requests:
               cpu: 100m
