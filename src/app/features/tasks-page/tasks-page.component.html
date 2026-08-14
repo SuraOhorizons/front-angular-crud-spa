@@ -1,0 +1,13 @@
+<div class="page">
+  <app-task-form
+    [task]="editingTask()"
+    (saved)="onSaved()"
+    (cancelled)="onCancelEdit()"
+  ></app-task-form>
+
+  <app-task-list
+    [refreshToken]="refreshToken()"
+    (edit)="onEdit($event)"
+    (changed)="onSaved()"
+  ></app-task-list>
+</div>

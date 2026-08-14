@@ -1,0 +1,36 @@
+<div class="chat">
+  <div class="chat__panel">
+    <div class="chat__history">
+      @if (messages().length === 0) {
+        <p class="chat__empty">Escribí un mensaje para empezar la conversación.</p>
+      }
+
+      @for (msg of messages(); track $index) {
+        <div class="chat__bubble" [class.chat__bubble--user]="msg.role === 'user'">
+          {{ msg.content }}
+        </div>
+      }
+
+      @if (loading()) {
+        <div class="chat__bubble chat__bubble--pending">Escribiendo…</div>
+      }
+    </div>
+
+    @if (error()) {
+      <p class="chat__error">{{ error() }}</p>
+    }
+
+    <form class="chat__form" (ngSubmit)="send()">
+      <input
+        class="chat__input"
+        type="text"
+        placeholder="Escribí tu mensaje..."
+        [ngModel]="draft()"
+        (ngModelChange)="draft.set($event)"
+        name="draft"
+        autocomplete="off"
+      />
+      <button class="chat__send" type="submit" [disabled]="loading()">Enviar</button>
+    </form>
+  </div>
+</div>
